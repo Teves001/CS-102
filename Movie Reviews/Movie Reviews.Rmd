@@ -31,7 +31,7 @@ for (url in Inside_Out){
   content <- page %>%html_nodes("div.text.show-more__control")%>%html_text()
 }
 
-Inside_Out_1 <- data.frame(
+InsideOut_1 <- data.frame(
   Name = names[1:25],
   Date = date [1:25],
   Rating = rating[1:25],
@@ -39,7 +39,7 @@ Inside_Out_1 <- data.frame(
   Content = content[1:25]
 )
 
-Inside_Out_1
+InsideOut_1
 
 
 
@@ -318,6 +318,9 @@ InsideOut_12 <- data.frame(
 
 InsideOut_12
 
+combined_InsideOut <- rbind(InsideOut_1,InsideOut_2,InsideOut_3,InsideOut_4,InsideOut_5,InsideOut_6,InsideOut_7,InsideOut_8,InsideOut_9,InsideOut_10,InsideOut_11,InsideOut_12)
+
+combined_InsideOut
 
 #2nd movie
 
@@ -622,6 +625,12 @@ True_Detective_12 <- data.frame(
 
 True_Detective_12
 
+combined_True_Detective <- rbind( True_Detective_1, True_Detective_2, True_Detective_3, True_Detective_4, True_Detective_5, True_Detective_6, True_Detective_7, True_Detective_8, True_Detective_9, True_Detective_10, True_Detective_11, True_Detective_12)
+
+combined_True_Detective
+
+
+
 #3rd movie
 
 Argylle <- "https://www.imdb.com/title/tt15009428/reviews?ref_=tt_urv"
@@ -924,6 +933,12 @@ Argylle_12 <- data.frame(
 )
 
 Argylle_12
+
+
+combined_Argylle <- rbind(Argylle_1, Argylle_2, Argylle_3, Argylle_4, Argylle_5, Argylle_6, Argylle_7, Argylle_8, Argylle_9, Argylle_10, Argylle_11, Argylle_12)
+
+combined_Argylle
+
 
 #4th movie
 
@@ -1228,6 +1243,12 @@ Smith_12 <- data.frame(
 
 Smith_12
 
+
+combined_Smith <- rbind(Smith_1,Smith_2, Smith_3, Smith_4, Smith_5, Smith_6, Smith_7, Smith_8, Smith_9, Smith_10, Smith_11, Smith_12)
+
+combined_Smith
+
+
 #5th movie
 
 Wonka <- "https://www.imdb.com/title/tt6166392/reviews?ref_=tt_urv"
@@ -1276,7 +1297,7 @@ Wonka_2 <- data.frame(
   Content = content2[1:25]
 )
 
-Wonka
+Wonka_2
 
 
 
@@ -1529,6 +1550,13 @@ Wonka_12 <- data.frame(
 )
 
 Wonka_12
+
+
+combined_Wonka <- rbind(Wonka_1, Wonka_2, Wonka_3, Wonka_4, Wonka_5, Wonka_6, Wonka_7, Wonka_8,Wonka_9, Wonka_10, Wonka_11, Wonka_12)
+
+combined_Wonka
+
+
 
 #6th movie
 
@@ -1831,6 +1859,12 @@ Fargo_12 <- data.frame(
 )
 
 Fargo_12
+
+
+combined_Fargo <- rbind(Fargo_1, Fargo_2, Fargo_3, Fargo_4, Fargo_5, Fargo_6, Fargo_7, Fargo_8, Fargo_9, Fargo_10, Fargo_11, Fargo_12)
+
+combined_Fargo
+
 
 #7th movie
 
@@ -2137,6 +2171,12 @@ divergent_df12 <- data.frame(
 
 divergent_df12
 
+
+combined_divergent <- rbind(divergent_df, divergent_df2, divergent_df3, divergent_df4, divergent_df5, divergent_df6, divergent_df7, divergent_df8, divergent_df9, divergent_df10, divergent_df11, divergent_df12)
+
+combined_divergent
+
+
 #8th movie
 
 pussnboots_1 <- "https://www.imdb.com/title/tt3915174/reviews?ref_=tt_urv"
@@ -2442,253 +2482,323 @@ pussnboots_df12 <- data.frame(
 
 pussnboots_df12
 
+
+combined_pussnboots <- rbind(pussnboots_df, pussnboots_df2, pussnboots_df3, pussnboots_df4, pussnboots_df5, pussnboots_df6, pussnboots_df7, pussnboots_df8, pussnboots_df9, pussnboots_df10, pussnboots_df11, pussnboots_df12)
+
+combined_pussnboots
+
+
 #9th movie
 
-saltburn_url<-'https://www.imdb.com/title/tt17351924/reviews?ref_=tt_urv' #SALTBURN
-session <- bow(saltburn_url,
-               user_agent = "Educational")
+maleficent_1 <- "https://www.imdb.com/title/tt1587310/reviews?ref_=tt_urv"
+
+session <- bow(maleficent_1, user_agent = "Educational")
+
+#url 1
+for (url in maleficent_1){
+  page <- read_html(url)
+  
+  names <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews <- page %>%html_nodes("a.title")%>%html_text()
+  content <- page %>%html_nodes("div.text.show-more__control")%>%html_text()
+}
+
+maleficent_df <- data.frame(
+  Name = names[1:25],
+  Date = date [1:25],
+  Rating = rating[1:25],
+  Reviews = reviews[1:25],
+  Content = content[1:25]
+)
+
+maleficent_df
+
+
+#url 2
+maleficent_2 <- "https://www.imdb.com/title/tt1587310/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjnbyr7rmwars2ipd74hia3c74vl5pjt6uds3oi2fjnzdb4d2aqn32w7ejqtt7wcrryenozvwo"
+
+for (url in maleficent_2){
+  page <- read_html(url)
+  
+  names2 <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date2 <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating2 <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews2 <- page %>%html_nodes("a.title")%>%html_text()
+  content2 <- page %>%html_nodes("div.text.show-more__control")%>%html_text()
+}
+
+maleficent_df2 <- data.frame(
+  Name = names2[1:25],
+  Date = date2 [1:25],
+  Rating = rating2[1:25],
+  Reviews = reviews2[1:25],
+  Content = content2[1:25]
+)
+
+maleficent_df2
+
+
+#url 3
+maleficent_3 <- "https://www.imdb.com/title/tt1587310/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjnbtr7rm4cj63mnt367jahapyul5pjt6uds3o4yv7mbob4dzspzcmfni2zniiqpj5pxlpmbpy"
+
+for (url in maleficent_3){
+  page <- read_html(url)
+  
+  names3 <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date3 <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating3 <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews3 <- page %>%html_nodes("a.title")%>%html_text()
+  content3 <- page %>%html_nodes("div.text.show-more__control")%>%html_text()
+}
+
+maleficent_df3 <- data.frame(
+  Name = names3[1:25],
+  Date = date3 [1:25],
+  Rating = rating3 [1:25],
+  Reviews = reviews3 [1:25],
+  Content = content3[1:25]
+)
+
+maleficent_df3
+
+
+#url 4
+maleficent_4 <- "https://www.imdb.com/title/tt1587310/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjnjyrtumqcbs2iktv7pjb3d7evd5pjt6uds3pe3vrnjmb4dvmrmmz6o3u7z5izckiqg7jkbhq"
+
+
+for (url in maleficent_4){
+  page <- read_html(url)
+  
+  names4 <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date4 <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating4 <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews4 <- page %>%html_nodes("a.title")%>%html_text()
+  content4 <- page %>%html_nodes("div.text.show-more__control")%>%html_text()
+}
+
+maleficent_df4 <- data.frame(
+  Name = names4[1:25],
+  Date = date4 [1:25],
+  Rating = rating4 [1:25],
+  Reviews = reviews4 [1:25],
+  Content = content3[1:25]
+)
+
+maleficent_df4
+
+
+#url 5
+maleficent_5 <- "https://www.imdb.com/title/tt1587310/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjnjwrdr4wcjs3aptx4ppada7svd5pjt6ubc7oy4v3mrkb4d5k4ddmscfgiunqbgsp7e4sobew"
+
+for (url in maleficent_5){
+  page <- read_html(url)
+  
+  names5 <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date5 <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating5 <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews5 <- page %>%html_nodes("a.title")%>%html_text()
+  content5 <- page %>%html_nodes("div.text.show-more__control")%>%html_text()
+}
+
+maleficent_df5 <- data.frame(
+  Name = names5[1:25],
+  Date = date5 [1:25],
+  Rating = rating5 [1:25],
+  Reviews = reviews5 [1:25],
+  Content = content5[1:25]
+)
+
+maleficent_df5
+
+#url 6
+maleficent_6 <- "https://www.imdb.com/title/tt1587310/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjnjurdqm2aj72iod767madc7gvt5pjt6uds3oi2fxprdb4dwllgtuzkm4rzdqpcanspnqloeo"
+
+for (url in maleficent_6){
+  page <- read_html(url)
+  
+  names6 <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date6 <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating6 <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews6 <- page %>%html_nodes("a.title")%>%html_text()
+  content6 <- page %>%html_nodes("div.text.show-more__control")%>%html_text()
+}
+
+maleficent_df6 <- data.frame(
+  Name = names6[1:25],
+  Date = date6 [1:25],
+  Rating = rating6 [1:25],
+  Reviews = reviews6 [1:25],
+  Content = content6[1:25]
+)
+
+maleficent_df6
+
+#url 7
+maleficent_7 <- "https://www.imdb.com/title/tt1587310/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjnjtrhs4ubr43ukt77pnb3a7uv35pjt6uck3oizvznjpb4dvdwqcf3z5atgzgrfsbgazds2a6"
+
+session <- bow(maleficent_7, user_agent = "Educational")
 session
 
-for(url in saltburn_url){
+for (url in maleficent_7){
   page <- read_html(url)
- 
-  saltburn_names<-page %>% html_nodes(".display-name-link") %>% html_text()
-  saltburn_dates<-page %>% html_nodes("span.review-date") %>% html_text()
-  saltburn_ratings<-page %>% html_nodes("span.rating-other-user-rating") %>% html_text()
-  saltburn_reviews<-page%>% html_nodes("a.title")%>%html_text()
-  saltburn_reviewsw<-page%>%html_nodes(".text.show-more__control")%>%html_text()
- 
-  saltburndf<-data.frame(
-    Name=saltburn_names[1:25],
-    Date=saltburn_dates[1:25],
-    User_Rating=saltburn_ratings[1:25],
-    Content=saltburn_reviews[1:25],
-    Review=saltburn_reviewsw[1:25]
-  )
+  
+  names7 <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date7 <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating7 <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews7 <- page %>%html_nodes("a.title")%>%html_text()
+  content7 <- page %>%html_nodes("div.text.show-more__control")%>%html_text()
 }
 
-saltburn_url2<-'https://www.imdb.com/title/tt17351924/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjnrvrxq4oab62motb77faxcpuul5pjt6ubc7ouzfjnrcb4d23i275p2px3kvhogku35tid4c4'
-session2 <- bow(saltburn_url2,
-               user_agent = "Educational")
-session2
+maleficent_df7 <- data.frame(
+  Name = names7[1:25],
+  Date = date7 [1:25],
+  Rating = rating7 [1:25],
+  Reviews = reviews7 [1:25],
+  Content = content7[1:25]
+)
 
-for(url in saltburn_url2){
+maleficent_df7
+
+
+#url 8
+maleficent_8 <- "https://www.imdb.com/title/tt1587310/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjnjrrxrmobj73ymdb4hnb7d7stttfjrksds7pe2fzpzyoaa3ybi35wqmuzddaba6cyld7gzq"
+
+session <- bow(maleficent_8, user_agent = "Educational")
+session
+
+for (url in maleficent_8){
   page <- read_html(url)
- 
-  saltburn_names2<-page %>% html_nodes(".display-name-link") %>% html_text()
-  saltburn_dates2<-page %>% html_nodes("span.review-date") %>% html_text()
-  saltburn_ratings2<-page %>% html_nodes("span.rating-other-user-rating") %>% html_text()
-  saltburn_reviews2<-page%>% html_nodes("a.title")%>%html_text()
-  saltburn_reviewsw2<-page%>%html_nodes(".text.show-more__control")%>%html_text()
- 
-  saltburndf2<-data.frame(
-    Name=saltburn_names2[1:25],
-    Date=saltburn_dates2[1:25],
-    User_Rating=saltburn_ratings2[1:25],
-    Content=saltburn_reviews2[1:25],
-    Review=saltburn_reviewsw2[1:25]
-  )
+  
+  names8 <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date8 <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating8 <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews8 <- page %>%html_nodes("a.title")%>%html_text()
+  content8 <- page %>%html_nodes("div.text.show-more__control")%>%html_text()
 }
 
-saltburn_url3<-'https://www.imdb.com/title/tt17351924/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjnztrdr4uajz3mpdx77la7dpww35pjt6ubc6pe4vvprlb4dztfta4ew64mpjq5d4zkld4tvao'
- 
-for(url in saltburn_url3){
+maleficent_df8 <- data.frame(
+  Name = names8[1:25],
+  Date = date8 [1:25],
+  Rating = rating8 [1:25],
+  Reviews = reviews8 [1:25],
+  Content = content8[1:25]
+)
+
+maleficent_df8
+
+#url 9
+maleficent_9 <- "https://www.imdb.com/title/tt1587310/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjmryrpt42br734md37xfa3d72u35pjt6uds3oi2vjnzpb4dsvideylys5krsjrtkcl46w4pse"
+
+session <- bow(maleficent_9, user_agent = "Educational")
+session
+
+for (url in maleficent_9){
   page <- read_html(url)
- 
-  saltburn_names3<-page %>% html_nodes(".display-name-link") %>% html_text()
-  saltburn_dates3<-page %>% html_nodes("span.review-date") %>% html_text()
-  saltburn_ratings3<-page %>% html_nodes("span.rating-other-user-rating") %>% html_text()
-  saltburn_reviews3<-page%>% html_nodes("a.title")%>%html_text()
-  saltburn_reviewsw3<-page%>%html_nodes(".text.show-more__control")%>%html_text()
- 
-  saltburndf3<-data.frame(
-    Name=saltburn_names3[1:25],
-    Date=saltburn_dates3[1:25],
-    User_Rating=saltburn_ratings3[1:25],
-    Content=saltburn_reviews3[1:25],
-    Review=saltburn_reviewsw3[1:25]
-  )
+  
+  names9 <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date9 <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating9 <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews9 <- page %>%html_nodes("a.title")%>%html_text()
+  content9 <- page %>%html_nodes("div.text.show-more__control")%>%html_text()
 }
 
-saltburn_url4<-'https://www.imdb.com/title/tt17351924/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjnbwrlq46ajt3mpdr7hja7c7yul5pjt6ubc6oq2v7prnb4dzgei3zia4ibcxsk3ycjgo5fvco'
- 
-for(url in saltburn_url4){
+maleficent_df9 <- data.frame(
+  Name = names9[1:25],
+  Date = date9 [1:25],
+  Rating = rating9 [1:25],
+  Reviews = reviews9 [1:25],
+  Content = content9[1:25]
+)
+
+maleficent_df9
+
+#url 10
+maleficent_10 <- "https://www.imdb.com/title/tt1587310/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjmrwrtumwars3emd57xjb3bpgtttfjrk4dkyoiyflnbyoaokxtptzz6erj657tmgaxyvjbnq"
+
+session <- bow(maleficent_10, user_agent = "Educational")
+session
+
+for (url in maleficent_10){
   page <- read_html(url)
- 
-  saltburn_names4<-page %>% html_nodes(".display-name-link") %>% html_text()
-  saltburn_dates4<-page %>% html_nodes("span.review-date") %>% html_text()
-  saltburn_ratings4<-page %>% html_nodes("span.rating-other-user-rating") %>% html_text()
-  saltburn_reviews4<-page%>% html_nodes("a.title")%>%html_text()
-  saltburn_reviewsw4<-page%>%html_nodes(".text.show-more__control")%>%html_text()
- 
-  saltburndf4<-data.frame(
-    Name=saltburn_names4[1:25],
-    Date=saltburn_dates4[1:25],
-    User_Rating=saltburn_ratings4[1:25],
-    Content=saltburn_reviews4[1:25],
-    Review=saltburn_reviewsw4[1:25]
-  )
-}  
-
-saltburn_url5<-'https://www.imdb.com/title/tt17351924/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjnbqrhqmqcb434nd37hia7b76w35pjt6ubc6oeyvtnjob4dtxb2zl77wgkbj2twtwx2dkoeow'
-
-for(url in saltburn_url5){
-  page <- read_html(url)
- 
-  saltburn_names5<-page %>% html_nodes(".display-name-link") %>% html_text()
-  saltburn_dates5<-page %>% html_nodes("span.review-date") %>% html_text()
-  saltburn_ratings5<-page %>% html_nodes("span.rating-other-user-rating") %>% html_text()
-  saltburn_reviews5<-page%>% html_nodes("a.title")%>%html_text()
-  saltburn_reviewsw5<-page%>%html_nodes(".text.show-more__control")%>%html_text()
- 
-  saltburndf5<-data.frame(
-    Name=saltburn_names5[1:25],
-    Date=saltburn_dates5[1:25],
-    User_Rating=saltburn_ratings5[1:25],
-    Content=saltburn_reviews5[1:25],
-    Review=saltburn_reviewsw5[1:25]
-  )
-}  
-
-saltburn_url6<-'https://www.imdb.com/title/tt17351924/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjnjyqps4yab33upd377fa3cp2v3hoq366sssou2vtpzmcr4k52m4krzo4hmop55lb2cyr6qez6y'
- 
-  for(url in saltburn_url6){
-  page <- read_html(url)
- 
-  saltburn_names6<-page %>% html_nodes(".display-name-link") %>% html_text()
-  saltburn_dates6<-page %>% html_nodes("span.review-date") %>% html_text()
-  saltburn_ratings6<-page %>% html_nodes("span.rating-other-user-rating") %>% html_text()
-  saltburn_reviews6<-page%>% html_nodes("a.title")%>%html_text()
-  saltburn_reviewsw6<-page%>%html_nodes(".text.show-more__control")%>%html_text()
- 
-  saltburndf6<-data.frame(
-    Name=saltburn_names6[1:25],
-    Date=saltburn_dates6[1:25],
-    User_Rating=saltburn_ratings6[1:25],
-    Content=saltburn_reviews6[1:25],
-    Review=saltburn_reviewsw6[1:25]
-  )
-  }  
-
-saltburn_url7<-'https://www.imdb.com/title/tt17351924/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjnjzqlumybr52mmd36xpale7sutfoq366sssoq2v5mjncv4k425zel3hpn2ny2eadmyfgwmw55y'
- 
-for(url in saltburn_url7){
-  page <- read_html(url)
- 
-  saltburn_names7<-page %>% html_nodes(".display-name-link") %>% html_text()
-  saltburn_dates7<-page %>% html_nodes("span.review-date") %>% html_text()
-  saltburn_ratings7<-page %>% html_nodes("span.rating-other-user-rating") %>% html_text()
-  saltburn_reviews7<-page%>% html_nodes("a.title")%>%html_text()
-  saltburn_reviewsw7<-page%>%html_nodes(".text.show-more__control")%>%html_text()
- 
-  saltburndf7<-data.frame(
-    Name=saltburn_names7[1:25],
-    Date=saltburn_dates7[1:25],
-    User_Rating=saltburn_ratings7[1:25],
-    Content=saltburn_reviews7[1:25],
-    Review=saltburn_reviewsw7[1:25]
-  )
-}  
-
-saltburn_url8<-'https://www.imdb.com/title/tt17351924/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjnjwrlum2bjy3aptb7xpatc72ul5pjt6ubc6om3fxmjcb4dv3t7z3svojobkx6uhnp2dmajlq'
-
-for(url in saltburn_url8){
-  page <- read_html(url)
- 
-  saltburn_names8<-page %>% html_nodes(".display-name-link") %>% html_text()
-  saltburn_dates8<-page %>% html_nodes("span.review-date") %>% html_text()
-  saltburn_ratings8<-page %>% html_nodes("span.rating-other-user-rating") %>% html_text()
-  saltburn_reviews8<-page%>% html_nodes("a.title")%>%html_text()
-  saltburn_reviewsw8<-page%>%html_nodes(".text.show-more__control")%>%html_text()
- 
-  saltburndf8<-data.frame(
-    Name=saltburn_names8[1:25],
-    Date=saltburn_dates8[1:25],
-    User_Rating=saltburn_ratings8[1:25],
-    Content=saltburn_reviews8[1:25],
-    Review=saltburn_reviewsw8[1:25]
-  )
-}  
-
-saltburn_url9<-'https://www.imdb.com/title/tt17351924/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjnjvrds4wazt2iodr4platd7wud5pjt6ubc6ou2f3nrlb4dywe5aag3a3vlqczb5ppkmb7cng'
-
-for(url in saltburn_url9){
-  page <- read_html(url)
- 
-  saltburn_names9<-page %>% html_nodes(".display-name-link") %>% html_text()
-  saltburn_dates9<-page %>% html_nodes("span.review-date") %>% html_text()
-  saltburn_ratings9<-page %>% html_nodes("span.rating-other-user-rating") %>% html_text()
-  saltburn_reviews9<-page%>% html_nodes("a.title")%>%html_text()
-  saltburn_reviewsw9<-page%>%html_nodes(".text.show-more__control")%>%html_text()
- 
-  saltburndf9<-data.frame(
-    Name=saltburn_names9[1:25],
-    Date=saltburn_dates9[1:25],
-    User_Rating=saltburn_ratings9[1:25],
-    Content=saltburn_reviews9[1:25],
-    Review=saltburn_reviewsw9[1:25]
-  )
+  
+  names10 <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date10 <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating10 <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews10 <- page %>%html_nodes("a.title")%>%html_text()
+  content10 <- page %>%html_nodes("div.text.show-more__control")%>%html_text()
 }
 
-saltburn_url10<-'https://www.imdb.com/title/tt17351924/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjnjqqps46az63iotz6hjahdpeul5pjt6ubc6oi3fvnblb4dzuxef22zunrtef6ljhyqbd3tyk'
+maleficent_df10 <- data.frame(
+  Name = names10[1:25],
+  Date = date10 [1:25],
+  Rating = rating10 [1:25],
+  Reviews = reviews10 [1:25],
+  Content = content10[1:25]
+)
 
-for(url in saltburn_url10){
+maleficent_df10
+
+#url11
+maleficent_11 <- "https://www.imdb.com/title/tt1587310/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjmrxrhtmmar53uktz6peadepwv35pjt6uc2toi4vlnrjb4dyb36zq5c3o2gh57wsz25ypux46"
+
+session <- bow(maleficent_11, user_agent = "Educational")
+session
+
+for (url in maleficent_11){
   page <- read_html(url)
- 
-  saltburn_names10<-page %>% html_nodes(".display-name-link") %>% html_text()
-  saltburn_dates10<-page %>% html_nodes("span.review-date") %>% html_text()
-  saltburn_ratings10<-page %>% html_nodes("span.rating-other-user-rating") %>% html_text()
-  saltburn_reviews10<-page%>% html_nodes("a.title")%>%html_text()
-  saltburn_reviewsw10<-page%>%html_nodes(".text.show-more__control")%>%html_text()
- 
-  saltburndf10<-data.frame(
-    Name=saltburn_names10[1:25],
-    Date=saltburn_dates10[1:25],
-    User_Rating=saltburn_ratings10[1:25],
-    Content=saltburn_reviews10[1:25],
-    Review=saltburn_reviewsw10[1:25]
-  )
+  
+  names11 <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date11 <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating11 <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews11 <- page %>%html_nodes("a.title")%>%html_text()
+  content11 <- page %>%html_nodes("div.text.show-more__control")%>%html_text()
 }
 
-saltburn_url11<-'https://www.imdb.com/title/tt17351924/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjmryqpqmmajy3andt7hlapep4udgoq366sssouyfxmrnd54k4x5mkj7xdxka5qrc2odjv6sfhni'
+maleficent_df11 <- data.frame(
+  Name = names11[1:25],
+  Date = date11 [1:25],
+  Rating = rating11 [1:25],
+  Reviews = reviews11 [1:25],
+  Content = content11[1:25]
+)
 
-for(url in saltburn_url11){
+maleficent_df11
+
+
+#url12
+maleficent_12 <- "https://www.imdb.com/title/tt1587310/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjmrvrxumwbr23qmd54piaxe7gwt5pjt6ucc5oiyv7nbnb4d44txpytpa7fqsjndjl2aboazjk"
+
+session <- bow(maleficent_12, user_agent = "Educational")
+session
+
+for (url in maleficent_12){
   page <- read_html(url)
- 
-  saltburn_names11<-page %>% html_nodes(".display-name-link") %>% html_text()
-  saltburn_dates11<-page %>% html_nodes("span.review-date") %>% html_text()
-  saltburn_ratings11<-page %>% html_nodes("span.rating-other-user-rating") %>% html_text()
-  saltburn_reviews11<-page%>% html_nodes("a.title")%>%html_text()
-  saltburn_reviewsw11<-page%>%html_nodes(".text.show-more__control")%>%html_text()
- 
-  saltburndf11<-data.frame(
-    Name=saltburn_names11[1:25],
-    Date=saltburn_dates11[1:25],
-    User_Rating=saltburn_ratings11[1:25],
-    Content=saltburn_reviews11[1:25],
-    Review=saltburn_reviewsw11[1:25]
-  )
+  
+  names12 <- page %>%html_nodes(".display-name-link")%>%html_text()
+  date12 <- page %>%html_nodes("span.review-date")%>%html_text()
+  rating12 <- page %>%html_nodes("span.rating-other-user-rating")%>%html_text()
+  reviews12 <- page %>%html_nodes("a.title")%>%html_text()
+  content12 <- page %>%html_nodes("div.text.show-more__control")%>%html_text()
 }
 
-saltburn_url12<-'https://www.imdb.com/title/tt17351924/reviews/_ajax?&paginationKey=g4w6ddbmqyzdo6ic4oxwjmrzrhq42bbs3mpt36hfb3a7ev35pjt6ubc6oq2flnblb4d4kr34jmkf2c23spfcrkgzbgly4'
+maleficent_df12 <- data.frame(
+  Name = names12[1:25],
+  Date = date12 [1:25],
+  Rating = rating12 [1:25],
+  Reviews = reviews12 [1:25],
+  Content = content12[1:25]
+)
 
-for(url in saltburn_url12){
-  page <- read_html(url)
- 
-  saltburn_names12<-page %>% html_nodes(".display-name-link") %>% html_text()
-  saltburn_dates12<-page %>% html_nodes("span.review-date") %>% html_text()
-  saltburn_ratings12<-page %>% html_nodes("span.rating-other-user-rating") %>% html_text()
-  saltburn_reviews12<-page%>% html_nodes("a.title")%>%html_text()
-  saltburn_reviewsw12<-page%>%html_nodes(".text.show-more__control")%>%html_text()
- 
-  saltburndf12<-data.frame(
-    Name=saltburn_names12[1:25],
-    Date=saltburn_dates12[1:25],
-    User_Rating=saltburn_ratings12[1:25],
-    Content=saltburn_reviews12[1:25],
-    Review=saltburn_reviewsw12[1:25]
-  )
-}
+maleficent_df12
+
+
+combine_maleficentdf <- rbind(maleficent_df, maleficent_df2, maleficent_df3, maleficent_df4, maleficent_df5, maleficent_df6, maleficent_df7, maleficent_df8, maleficent_df9, maleficent_df10, maleficent_df11, maleficent_df12)
+
+combine_maleficentdf
+
+
 
 #10 movie
 
@@ -3049,6 +3159,20 @@ cinderella_df12 <- data.frame(
 )
 
 cinderella_df12
+
+
+
+combined_cinderella <- rbind(cinderella_df, cinderella_df2, cinderella_df3, cinderella_df4, cinderella_df5, cinderella_df6, cinderella_df7, cinderella_df8, cinderella_df9, cinderella_df10, cinderella_df11, cinderella_df12)
+
+combined_cinderella
+
+
+
+
+
+combined_3000 <- rbind(combined_InsideOut, combined_Argylle, combine_maleficentdf, combined_cinderella, combined_divergent, combined_Fargo, combined_pussnboots, combined_Smith, combined_True_Detective,combined)
+combined_3000
+
 ```
 
 
