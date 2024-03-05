@@ -28,6 +28,12 @@ numeric_or_integer_columns
 
 #Error messages in R sometimes report the underlying type of an object rather than theuser-level class. Derive from the following code and error message what theunderlying type.
 
+for (i in 1:ncol(numeric_or_integer_columns)) {
+  if (!is.integer(numeric_or_integer_columns[, i])) {
+    numeric_or_integer_columns[, i] <- as.integer(numeric_or_integer_columns[, i]) 
+  } 
+}
+
 #3 ERROR MESSAGE
 #Error in 1:ncol(numeric_or_integer_columns) : argument of length 0
 
